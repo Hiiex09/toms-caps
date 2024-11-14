@@ -34,7 +34,7 @@ $result = $conn->query($sql);
 <body>
   <aside>
     <div class="container">
-      <div class="fixed bottom-0 left-0 top-0 z-50 w-[260px] border shadow">
+      <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
         <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
           <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
         </div>
@@ -130,6 +130,9 @@ $result = $conn->query($sql);
   <main>
     <!-- class="fixed bottom-0 left-0 right-0 top-0 z-10 mx-[260px] w-[1200px] p-10 border" -->
     <div class="fixed bottom-0 left-[260px] right-0 top-0 z-10 p-10">
+      <div class="m-2">
+        <h1 class="text-4xl">STUDENT TABLE</h1>
+      </div>
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
         <div class="flex  justify-between items-center p-2">
           <div>
@@ -178,10 +181,10 @@ $result = $conn->query($sql);
             <th class="px-4 py-2 text-center">Action</th>
           </tr>
         </thead>
-        <tbody class="border">
+        <tbody>
           <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
-              <tr>
+              <tr class="border-b hover:bg-pink-50">
                 <td class="px-4 py-2 text-center border"><?php echo htmlspecialchars($row['school_id']); ?></td>
                 <td class="px-4 py-2 text-center border">
                   <div class="flex justify-center items-center">
@@ -236,7 +239,7 @@ $result = $conn->query($sql);
     </div>
 
 
-    <div class="fixed top-20 z-10 w-3/4 h-4/6  mx-5  p-2 rounded-md bg-slate-900 text-white
+    <div class="fixed top-20 left-80 z-10 w-3/4 h-4/6  p-2 rounded-md bg-slate-900 text-white
              hidden modal">
       <div class="absolute top-5 right-5 cursor-pointer js-close">
         <img
@@ -341,7 +344,7 @@ $result = $conn->query($sql);
               </div>
               <div class="m-1 flex justify-between items-center">
                 <div>
-                  <label class="text-white text-lg">Last Name</label>
+                  <label class="text-white text-lg">Email</label>
                 </div>
                 <div>
                   <span>
@@ -618,7 +621,6 @@ function addStudent($conn, $school_id, $fname, $lname, $email, $department_id, $
 
         if ($stmt_section->execute()) {
           echo "Irregular student added successfully without section!";
-          header('Location: ../admin/student_view.php');
         } else {
           echo "Error: " . $stmt_section->error;
         }

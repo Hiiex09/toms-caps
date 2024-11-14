@@ -39,8 +39,16 @@ if ($schoolyear) {
   <aside>
     <div class="container">
       <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] bg-white shadow">
-        <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
-          <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
+        <div class=" text-2xl text-center flex justify-center items-center hover:border py-1 rounded-sm cursor-pointer">
+          <div class="mx-1">
+            <img
+              src="../admin/Images/CEC.png"
+              alt="school_year-image"
+              class="h-10 w-10">
+          </div>
+          <div class="mx-3">
+            <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
+          </div>
         </div>
         <div class="flex flex-col justify-evenly item-center text-center gap-2 mt-5">
           <div class="flex justify-center item-center gap-2 hover:bg-gray-400 py-2 hover:text-black cursor-pointer">
@@ -158,8 +166,13 @@ if ($schoolyear) {
 
           <div class="grid grid-cols-3 gap-5 w-full mt-20">
             <div class="relative h-[150px] border-4 border-blue-900 bg-blue-100 rounded-md shadow-md  shadow-blue-200">
-              <div class="p-3">
-                <h1 class="text-4xl">Student</h1>
+              <div class="p-3 flex justify-between items-center">
+                <div>
+                  <h1 class="text-4xl">Student</h1>
+                </div>
+                <div>
+                  <img src="../admin/img_side/student_side.svg" alt="student" class="w-8 h-8">
+                </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-blue-900"></div>
               <div class="absolute bottom-[30px] left-20 text-4xl">
@@ -180,8 +193,13 @@ if ($schoolyear) {
               </div>
             </div>
             <div class="relative h-[150px] border-4 border-green-900 bg-green-100 rounded-md shadow-md  shadow-green-200">
-              <div class="p-3">
-                <h1 class="text-4xl">Teacher</h1>
+              <div class="p-3 flex justify-between items-center">
+                <div>
+                  <h1 class="text-4xl">Teacher</h1>
+                </div>
+                <div>
+                  <img src="../admin/img_side/teacher-svgrepo-com.svg" alt="student" class="w-8 h-8">
+                </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-green-900"></div>
               <div class="absolute bottom-[30px] left-12 text-4xl">
@@ -202,8 +220,13 @@ if ($schoolyear) {
               </div>
             </div>
             <div class="relative h-[150px] border-4 border-pink-900 bg-pink-100 rounded-md shadow-md  shadow-pink-200">
-              <div class="p-3">
-                <h1 class="text-4xl">Department</h1>
+              <div class="p-3 flex justify-between items-center">
+                <div>
+                  <h1 class="text-4xl">Department</h1>
+                </div>
+                <div>
+                  <img src="../admin/img_side/department_side.svg" alt="Department" class="w-8 h-8">
+                </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-pink-900"></div>
               <div class="absolute bottom-[30px] left-20 text-4xl">
@@ -224,8 +247,13 @@ if ($schoolyear) {
               </div>
             </div>
             <div class="relative h-[150px] border-4 border-orange-900 bg-orange-100 rounded-md shadow-md  shadow-orange-200">
-              <div class="p-3">
-                <h1 class="text-4xl">Section</h1>
+              <div class="p-3 flex justify-between items-center">
+                <div>
+                  <h1 class="text-4xl">Section</h1>
+                </div>
+                <div>
+                  <img src="../admin/img_side/section_side.svg" alt="student" class="w-8 h-8">
+                </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-orange-900"></div>
               <div class="absolute bottom-[30px] left-20 text-4xl">
@@ -246,8 +274,13 @@ if ($schoolyear) {
               </div>
             </div>
             <div class="relative h-[150px] border-4 border-indigo-900 bg-indigo-100 rounded-md shadow-md  shadow-indigo-200">
-              <div class="p-3">
-                <h1 class="text-4xl">Criteia</h1>
+              <div class="p-3 flex justify-between items-center">
+                <div>
+                  <h1 class="text-4xl">Criteria</h1>
+                </div>
+                <div>
+                  <img src="../admin/img_side/criteria_side.svg" alt="student" class="w-8 h-8">
+                </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-indigo-900"></div>
               <div class="absolute bottom-[30px] left-20 text-4xl">
@@ -268,8 +301,13 @@ if ($schoolyear) {
               </div>
             </div>
             <div class="relative h-[150px] border-4 border-gray-900 bg-gray-100 rounded-md shadow-md  shadow-gray-200">
-              <div class="p-3">
-                <h1 class="text-4xl">Subject</h1>
+              <div class="p-3 flex justify-between items-center">
+                <div>
+                  <h1 class="text-4xl">Subject</h1>
+                </div>
+                <div>
+                  <img src="../admin/img_side/subject_side.svg" alt="subject" class="w-8 h-8">
+                </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-gray-900"></div>
               <div class="absolute bottom-[30px] left-20 text-4xl">

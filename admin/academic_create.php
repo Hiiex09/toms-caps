@@ -92,7 +92,7 @@ $conn->close();
 <body>
   <aside>
     <div class="container">
-      <div class="fixed bottom-0 left-0 top-0 z-50 w-[260px] border shadow">
+      <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
         <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
           <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
         </div>
@@ -190,14 +190,14 @@ $conn->close();
     <main>
       <div class="fixed bottom-0 left-[260px] right-0 top-0 z-10 p-10">
         <div class="flex justify-start items-center">
-          <div class="mx-5">
+          <div class="m-2">
             <img
-              src="../admin/Images/number.svg"
+              src="../admin/Images/CEC.png"
               alt="school_year-image"
-              class="h-14 w-14">
+              class="h-20 w-20">
           </div>
-          <div>
-            <h1 class="text-5xl">Manage School Year</h1>
+          <div class="m-1">
+            <h1 class="text-6xl">Manage School Year</h1>
           </div>
         </div>
         <form action="" method="POST">
@@ -265,7 +265,7 @@ $conn->close();
             while ($row = $school_years->fetch_assoc()):
               $active = $row['is_default'];
             ?>
-              <tr>
+              <tr class="border-b hover:bg-pink-50">
                 <th class="text-center"><?php echo $i++ ?></th>
                 <td class="px-4 py-2 text-center border"><b><?php echo $row['school_year']; ?></b></td>
                 <td class="px-4 py-2 text-center border"><b><?php echo $row['semester']; ?></b></td>

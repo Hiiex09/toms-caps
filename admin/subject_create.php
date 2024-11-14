@@ -115,7 +115,7 @@ if (isset($_GET['delete'])) {
           </thead>
           <tbody>
             <?php foreach ($subjectList as $index => $listsubject): ?>
-              <tr class="border-b hover:bg-gray-50">
+              <tr class="border-b hover:bg-pink-50">
                 <td class="px-4 py-2 text-start border"><?php echo htmlspecialchars($listsubject['subject_name']); ?></td>
                 <td class="px-4 py-2 text-start border">
                   <div class="flex justify-start gap-4">

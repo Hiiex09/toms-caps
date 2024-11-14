@@ -2,9 +2,9 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 07, 2024 at 05:25 AM
--- Server version: 8.0.40
+-- Host: 127.0.0.1
+-- Generation Time: Nov 14, 2024 at 09:15 AM
+-- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -51,12 +51,44 @@ INSERT INTO `admin` (`id`, `name`, `username`, `email`, `password`, `image`, `da
 --
 
 CREATE TABLE `tblanswer` (
-  `answer_id` int NOT NULL,
-  `evaluate_id` int NOT NULL,
-  `criteria_id` int NOT NULL,
-  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `ratings` enum('1','2','3','4') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `answer_id` int(11) NOT NULL,
+  `evaluate_id` int(11) NOT NULL,
+  `criteria_id` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `ratings` enum('1','2','3','4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblanswer`
+--
+
+INSERT INTO `tblanswer` (`answer_id`, `evaluate_id`, `criteria_id`, `comment`, `ratings`) VALUES
+(1, 1, 1, '0', '1'),
+(2, 1, 2, 'dgghff', '1'),
+(3, 1, 3, '0', '1'),
+(4, 1, 4, '0', '1'),
+(5, 1, 5, '0', '1'),
+(6, 1, 6, '0', '1'),
+(7, 1, 7, '0', '1'),
+(8, 1, 8, '0', '1'),
+(9, 1, 9, '0', '1'),
+(10, 1, 10, '0', '1'),
+(11, 1, 11, '0', '1'),
+(12, 1, 12, '0', '1'),
+(13, 1, 13, '0', '1'),
+(14, 2, 1, '0', '1'),
+(15, 2, 2, '0', '1'),
+(16, 2, 3, 'trrtrytyyyfg', '1'),
+(17, 2, 4, '0', '1'),
+(18, 2, 5, '0', '1'),
+(19, 2, 6, '0', '1'),
+(20, 2, 7, '0', '1'),
+(21, 2, 8, '0', '1'),
+(22, 2, 9, '0', '1'),
+(23, 2, 10, '0', '1'),
+(24, 2, 11, '0', '1'),
+(25, 2, 12, '0', '1'),
+(26, 2, 13, '0', '1');
 
 -- --------------------------------------------------------
 
@@ -65,8 +97,8 @@ CREATE TABLE `tblanswer` (
 --
 
 CREATE TABLE `tblcriteria` (
-  `criteria_id` int NOT NULL,
-  `criteria` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `criteria_id` int(11) NOT NULL,
+  `criteria` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -95,8 +127,8 @@ INSERT INTO `tblcriteria` (`criteria_id`, `criteria`) VALUES
 --
 
 CREATE TABLE `tbldepartment` (
-  `department_id` int NOT NULL,
-  `department_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `department_id` int(11) NOT NULL,
+  `department_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -120,11 +152,19 @@ INSERT INTO `tbldepartment` (`department_id`, `department_name`) VALUES
 --
 
 CREATE TABLE `tblevaluate` (
-  `evaluation_id` int NOT NULL,
-  `schoolyear_id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `teacher_id` int NOT NULL
+  `evaluate_id` int(11) NOT NULL,
+  `schoolyear_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblevaluate`
+--
+
+INSERT INTO `tblevaluate` (`evaluate_id`, `schoolyear_id`, `student_id`, `teacher_id`) VALUES
+(1, 20, 1, 2),
+(2, 20, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -133,11 +173,11 @@ CREATE TABLE `tblevaluate` (
 --
 
 CREATE TABLE `tblschoolyear` (
-  `schoolyear_id` int NOT NULL,
-  `school_year` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `semester` enum('1','2','3','') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `is_default` enum('No','Yes') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'No',
-  `is_status` enum('Not Yet Started','Started','Closed') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Not Yet Started'
+  `schoolyear_id` int(11) NOT NULL,
+  `school_year` varchar(255) NOT NULL,
+  `semester` enum('1','2','3','') DEFAULT NULL,
+  `is_default` enum('No','Yes') DEFAULT 'No',
+  `is_status` enum('Not Yet Started','Started','Closed') DEFAULT 'Not Yet Started'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -154,9 +194,9 @@ INSERT INTO `tblschoolyear` (`schoolyear_id`, `school_year`, `semester`, `is_def
 --
 
 CREATE TABLE `tblsection` (
-  `section_id` int NOT NULL,
-  `section_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `year_level` int NOT NULL
+  `section_id` int(11) NOT NULL,
+  `section_name` varchar(255) NOT NULL,
+  `year_level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -167,7 +207,8 @@ INSERT INTO `tblsection` (`section_id`, `section_name`, `year_level`) VALUES
 (1, 'A1', 1),
 (2, 'B1', 2),
 (3, 'C1', 3),
-(4, 'D1', 4);
+(4, 'D1', 4),
+(5, 'A1', 2);
 
 -- --------------------------------------------------------
 
@@ -176,11 +217,22 @@ INSERT INTO `tblsection` (`section_id`, `section_name`, `year_level`) VALUES
 --
 
 CREATE TABLE `tblsection_teacher_subject` (
-  `section_teacher_subject_id` int NOT NULL,
-  `section_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
-  `subject_id` int NOT NULL
+  `section_teacher_subject_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblsection_teacher_subject`
+--
+
+INSERT INTO `tblsection_teacher_subject` (`section_teacher_subject_id`, `section_id`, `teacher_id`, `subject_id`) VALUES
+(1, 1, 1, 7),
+(2, 1, 1, 9),
+(3, 1, 1, 8),
+(4, 1, 1, 6),
+(5, 2, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -189,15 +241,23 @@ CREATE TABLE `tblsection_teacher_subject` (
 --
 
 CREATE TABLE `tblstudent` (
-  `student_id` int NOT NULL,
-  `school_id` int NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `department_id` int NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `year_level` int NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `student_id` int(11) NOT NULL,
+  `school_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `year_level` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblstudent`
+--
+
+INSERT INTO `tblstudent` (`student_id`, `school_id`, `name`, `email`, `department_id`, `password`, `year_level`, `image`) VALUES
+(1, 1111111, '1111111 1111111', '1111111@gmail.com', 2, '1111111', 1, '672dec7472824.png'),
+(2, 2222222, '2222222 2222222', '2222222@gmail.com', 1, '2222222', 1, '672deca7dd8f9.png');
 
 -- --------------------------------------------------------
 
@@ -206,11 +266,19 @@ CREATE TABLE `tblstudent` (
 --
 
 CREATE TABLE `tblstudent_section` (
-  `student_section_id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `section_id` int NOT NULL,
+  `student_section_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
   `is_regular` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblstudent_section`
+--
+
+INSERT INTO `tblstudent_section` (`student_section_id`, `student_id`, `section_id`, `is_regular`) VALUES
+(1, 1, 0, 0),
+(2, 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -219,11 +287,23 @@ CREATE TABLE `tblstudent_section` (
 --
 
 CREATE TABLE `tblstudent_teacher_subject` (
-  `sts_id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
-  `subject_id` int NOT NULL
+  `sts_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblstudent_teacher_subject`
+--
+
+INSERT INTO `tblstudent_teacher_subject` (`sts_id`, `student_id`, `teacher_id`, `subject_id`) VALUES
+(1, 2, 1, 7),
+(2, 2, 1, 9),
+(3, 2, 2, 8),
+(4, 4, 1, 7),
+(5, 1, 2, 8),
+(6, 1, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -232,8 +312,8 @@ CREATE TABLE `tblstudent_teacher_subject` (
 --
 
 CREATE TABLE `tblsubject` (
-  `subject_id` int NOT NULL,
-  `subject_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `subject_id` int(11) NOT NULL,
+  `subject_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -258,11 +338,11 @@ INSERT INTO `tblsubject` (`subject_id`, `subject_name`) VALUES
 --
 
 CREATE TABLE `tblteacher` (
-  `teacher_id` int NOT NULL,
-  `school_id` int NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `department_id` int NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `teacher_id` int(11) NOT NULL,
+  `school_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -271,7 +351,8 @@ CREATE TABLE `tblteacher` (
 
 INSERT INTO `tblteacher` (`teacher_id`, `school_id`, `name`, `department_id`, `image`) VALUES
 (1, 9876543, 'sad sad', 1, '672b5b641f8d9.jpg'),
-(2, 8765432, 'das das', 2, '672b5b7cc3de7.jpg');
+(2, 8765432, 'das das', 2, '672b5b7cc3de7.jpg'),
+(3, 6549489, 'Juan Maria', 4, '6732fc4711733.png');
 
 -- --------------------------------------------------------
 
@@ -280,9 +361,9 @@ INSERT INTO `tblteacher` (`teacher_id`, `school_id`, `name`, `department_id`, `i
 --
 
 CREATE TABLE `tblteacher_section` (
-  `teacher_section_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
-  `section_id` int NOT NULL
+  `teacher_section_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -319,7 +400,7 @@ ALTER TABLE `tbldepartment`
 -- Indexes for table `tblevaluate`
 --
 ALTER TABLE `tblevaluate`
-  ADD PRIMARY KEY (`evaluation_id`),
+  ADD PRIMARY KEY (`evaluate_id`),
   ADD KEY `schoolyear_id` (`schoolyear_id`),
   ADD KEY `student_id` (`student_id`),
   ADD KEY `teacher_id` (`teacher_id`);
@@ -399,89 +480,104 @@ ALTER TABLE `tblteacher_section`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblanswer`
 --
 ALTER TABLE `tblanswer`
-  MODIFY `answer_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tblcriteria`
 --
 ALTER TABLE `tblcriteria`
-  MODIFY `criteria_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `criteria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbldepartment`
 --
 ALTER TABLE `tbldepartment`
-  MODIFY `department_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tblevaluate`
 --
 ALTER TABLE `tblevaluate`
-  MODIFY `evaluation_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `evaluate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblschoolyear`
 --
 ALTER TABLE `tblschoolyear`
-  MODIFY `schoolyear_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `schoolyear_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tblsection`
 --
 ALTER TABLE `tblsection`
-  MODIFY `section_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblsection_teacher_subject`
 --
 ALTER TABLE `tblsection_teacher_subject`
-  MODIFY `section_teacher_subject_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `section_teacher_subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblstudent`
 --
 ALTER TABLE `tblstudent`
-  MODIFY `student_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblstudent_section`
 --
 ALTER TABLE `tblstudent_section`
-  MODIFY `student_section_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `student_section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblstudent_teacher_subject`
 --
 ALTER TABLE `tblstudent_teacher_subject`
-  MODIFY `sts_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `sts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblsubject`
 --
 ALTER TABLE `tblsubject`
-  MODIFY `subject_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblteacher`
 --
 ALTER TABLE `tblteacher`
-  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tblteacher_section`
 --
 ALTER TABLE `tblteacher_section`
-  MODIFY `teacher_section_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `teacher_section_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tblanswer`
+--
+ALTER TABLE `tblanswer`
+  ADD CONSTRAINT `tblanswer_ibfk_1` FOREIGN KEY (`evaluate_id`) REFERENCES `tblevaluate` (`evaluate_id`),
+  ADD CONSTRAINT `tblanswer_ibfk_2` FOREIGN KEY (`criteria_id`) REFERENCES `tblcriteria` (`criteria_id`);
+
+--
+-- Constraints for table `tblevaluate`
+--
+ALTER TABLE `tblevaluate`
+  ADD CONSTRAINT `tblevaluate_ibfk_1` FOREIGN KEY (`schoolyear_id`) REFERENCES `tblschoolyear` (`schoolyear_id`),
+  ADD CONSTRAINT `tblevaluate_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `tblstudent` (`student_id`),
+  ADD CONSTRAINT `tblevaluate_ibfk_3` FOREIGN KEY (`teacher_id`) REFERENCES `tblteacher` (`teacher_id`);
 
 --
 -- Constraints for table `tblsection_teacher_subject`
@@ -492,12 +588,37 @@ ALTER TABLE `tblsection_teacher_subject`
   ADD CONSTRAINT `tblsection_teacher_subject_ibfk_3` FOREIGN KEY (`subject_id`) REFERENCES `tblsubject` (`subject_id`);
 
 --
+-- Constraints for table `tblstudent`
+--
+ALTER TABLE `tblstudent`
+  ADD CONSTRAINT `tblstudent_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tbldepartment` (`department_id`);
+
+--
+-- Constraints for table `tblstudent_section`
+--
+ALTER TABLE `tblstudent_section`
+  ADD CONSTRAINT `tblstudent_section_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `tblstudent` (`student_id`);
+
+--
 -- Constraints for table `tblstudent_teacher_subject`
 --
 ALTER TABLE `tblstudent_teacher_subject`
   ADD CONSTRAINT `tblstudent_teacher_subject_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `tblstudent` (`student_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tblstudent_teacher_subject_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `tblteacher` (`teacher_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tblstudent_teacher_subject_ibfk_3` FOREIGN KEY (`subject_id`) REFERENCES `tblsubject` (`subject_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tblteacher`
+--
+ALTER TABLE `tblteacher`
+  ADD CONSTRAINT `tblteacher_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tbldepartment` (`department_id`);
+
+--
+-- Constraints for table `tblteacher_section`
+--
+ALTER TABLE `tblteacher_section`
+  ADD CONSTRAINT `tblteacher_section_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `tblteacher` (`teacher_id`),
+  ADD CONSTRAINT `tblteacher_section_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `tblsection` (`section_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

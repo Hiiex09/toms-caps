@@ -38,7 +38,7 @@ $result = $conn->query($sql);
 
       </div>
       <hr>
-      <div class="fixed bottom-0 left-0 top-0 z-50 w-[260px] border shadow">
+      <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
         <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
           <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
         </div>
@@ -134,7 +134,10 @@ $result = $conn->query($sql);
 
   <main>
     <div class="fixed bottom-0 left-[260px] right-0 top-0 z-10 p-10">
-      <div class="mx-2 cursor-pointer m-2">
+      <div class="m-1">
+        <h1 class="text-4xl">TEACHER TABLE</h1>
+      </div>
+      <div class="mx-2 mt-8 cursor-pointer m-2">
         <span class="px-3 py-2 border text-lg hover:bg-blue-900
            hover:text-white rounded-md js-modal">ADD TEACHER</span>
         <span class="m-2 px-3 py-2 bg-blue-900 text-lg hover:bg-blue-500 text-white
@@ -389,7 +392,7 @@ $result = $conn->query($sql);
         <tbody>
           <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
-              <tr>
+              <tr class="border-b hover:bg-pink-50">
                 <td class="text-center text-black border"><?php echo htmlspecialchars($row['school_id']); ?></td>
                 <td class="text-center text-black border">
                   <div class="flex justify-center item-center">

@@ -59,7 +59,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
 
       </div>
       <hr>
-      <div class="fixed bottom-0 left-0 top-0 z-50 w-[260px] border shadow">
+      <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
         <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
           <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
         </div>
@@ -220,7 +220,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
         </thead>
         <tbody>
           <?php while ($row = $sections->fetch_assoc()) { ?>
-            <tr>
+            <tr class="border-b hover:bg-pink-50">
               <td class="px-4 py-2 text-start border"><?php echo $row['section_id']; ?></td>
               <td class="px-4 py-2 text-start border"><?php echo $row['section_name']; ?></td>
               <td class="px-4 py-2 text-start border"><?php echo $row['year_level']; ?></td>

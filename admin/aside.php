@@ -18,7 +18,7 @@ include('../database/dbconnect.php');
 
       </div>
       <hr>
-      <div class="fixed bottom-0 left-0 top-0 z-50 w-[260px] border shadow">
+      <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
         <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
           <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
         </div>
