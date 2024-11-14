@@ -198,7 +198,7 @@ if ($schoolyear) {
                   <h1 class="text-4xl">Teacher</h1>
                 </div>
                 <div>
-                  <img src="../admin/img_side/teacher-svgrepo-com.svg" alt="student" class="w-8 h-8">
+                  <img src="../admin/img_side/teacher-svgrepo-com.svg" alt="teacher" class="w-8 h-8">
                 </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-green-900"></div>
@@ -252,7 +252,7 @@ if ($schoolyear) {
                   <h1 class="text-4xl">Section</h1>
                 </div>
                 <div>
-                  <img src="../admin/img_side/section_side.svg" alt="student" class="w-8 h-8">
+                  <img src="../admin/img_side/section_side.svg" alt="section" class="w-8 h-8">
                 </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-orange-900"></div>
@@ -279,7 +279,7 @@ if ($schoolyear) {
                   <h1 class="text-4xl">Criteria</h1>
                 </div>
                 <div>
-                  <img src="../admin/img_side/criteria_side.svg" alt="student" class="w-8 h-8">
+                  <img src="../admin/img_side/criteria_side.svg" alt="criteria" class="w-8 h-8">
                 </div>
               </div>
               <div class="absolute bottom-[30px] left-5 h-10 w-10 rounded-full bg-indigo-900"></div>

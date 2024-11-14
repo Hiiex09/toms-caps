@@ -19,8 +19,16 @@ include('../database/dbconnect.php');
       </div>
       <hr>
       <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
-        <div class=" text-2xl text-center hover:bg-blue-900 hover:text-white py-1 rounded-sm cursor-pointer">
-          <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
+        <div class=" text-2xl text-center flex justify-center items-center hover:border py-1 rounded-sm cursor-pointer">
+          <div class="mx-1">
+            <img
+              src="../admin/Images/CEC.png"
+              alt="school_year-image"
+              class="h-10 w-10">
+          </div>
+          <div class="mx-3">
+            <a href="adminDashboard.php" class="cursor-pointer">Dashboard</a>
+          </div>
         </div>
         <div class="flex flex-col justify-evenly item-center text-center gap-2 mt-5">
           <div class="flex justify-center item-center gap-2 hover:bg-gray-400 py-2 cursor-pointer">

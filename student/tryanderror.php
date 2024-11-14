@@ -8,16 +8,16 @@ if (!isset($_SESSION['student_id']) && !isset($_SESSION['school_id']) || !isset(
   echo "Please log in as a student to view your teachers.";
   exit;
 }
-echo "<pre>";
-print_r($_SESSION); // This will display the session data
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
 
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
+// echo '<pre>';
+// print_r($_POST);
+// echo '</pre>';
 
 
-// Assign the student_id from the session
+
 $student_id = $_SESSION['student_id']; // Assuming student_id is passed in the form via POST
 $school_id = $_SESSION['school_id']; // Get the school_id from the session
 $fname = $_SESSION['name']; // Get the student name from the session
@@ -245,7 +245,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -256,14 +255,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 py-5 px-4">
+<body>
 
-  <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+  <div class="w-full bg-white p-6 rounded-lg shadow-lg">
     <h1 class="text-center text-2xl text-gray-800">Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?> - <?php echo htmlspecialchars($_SESSION['school_id']); ?></h1>
     <h2 class="text-center text-xl text-gray-700 mt-2">Your Assigned Teachers and Subjects</h2>
 
     <?php if (!empty($teachers)): ?>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 w-full">
         <?php foreach ($teachers as $teacher): ?>
           <div class="bg-gray-100 p-4 rounded-lg shadow-md flex items-center hover:scale-105 transform transition-all cursor-pointer" onclick="selectTeacher(<?php echo $teacher['teacher_id']; ?>, '<?php echo addslashes($teacher['teacher_name']); ?>', '<?php echo addslashes($teacher['subject_name']); ?>')">
             <img src="../pic/pics/<?php echo htmlspecialchars($teacher['image']); ?>" alt="Teacher Profile" class="w-20 h-20 rounded-full mr-4">

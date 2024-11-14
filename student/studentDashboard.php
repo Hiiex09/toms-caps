@@ -46,7 +46,7 @@ if ($schoolyear) {
       <div>
         <div class="mb-4 flex items-center hover:bg-gray-400 cursor-pointer">
           <img src="pic/user.svg" class="w-6 mr-2">
-          <a href="../student/sad.php" class="text-2xl">Evaluate</a>
+          <a href="../student/tryanderror.php" class="text-2xl">Evaluate</a>
         </div>
         <div class="mb-4 flex items-center hover:bg-gray-400 cursor-pointer">
           <img src="pic/inbox.svg" class="w-6 mr-2">
