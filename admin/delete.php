@@ -11,22 +11,51 @@ if (isset($_GET['deleteId'])) {
   // Ensure $teacher_id is an integer to avoid any unexpected issues
   $teacher_id = intval($teacher_id);
 
-  // Perform your database query to delete the record
-  $sql = "DELETE FROM `tblteacher` WHERE teacher_id = ?";
-  if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("i", $teacher_id); // 'i' for integer
-    if ($stmt->execute()) {
-      // Success message
-      echo "Record deleted successfully.";
-      // Redirect to the teachers list page after successful deletion
-      header("Location:teacher_view.php"); // Redirect to another page, e.g., teachers list
-      exit();
+  // Step 1: Delete related records in tblanswer
+  $sql_delete_answer = "DELETE FROM `tblanswer` WHERE evaluate_id IN (SELECT evaluate_id FROM tblevaluate WHERE teacher_id = ?)";
+  if ($stmt_answer = $conn->prepare($sql_delete_answer)) {
+    $stmt_answer->bind_param("i", $teacher_id); // 'i' for integer
+    if ($stmt_answer->execute()) {
+      // Success: Proceed to delete related evaluations in tblevaluate
+      echo "Related answers deleted successfully.<br>";
+
+      // Step 2: Delete related records in tblevaluate
+      $sql_delete_evaluate = "DELETE FROM `tblevaluate` WHERE teacher_id = ?";
+      if ($stmt_evaluate = $conn->prepare($sql_delete_evaluate)) {
+        $stmt_evaluate->bind_param("i", $teacher_id); // 'i' for integer
+        if ($stmt_evaluate->execute()) {
+          // Success: Proceed to delete the teacher record
+          echo "Related evaluations deleted successfully.<br>";
+
+          // Step 3: Delete the teacher record
+          $sql_delete_teacher = "DELETE FROM `tblteacher` WHERE teacher_id = ?";
+          if ($stmt_teacher = $conn->prepare($sql_delete_teacher)) {
+            $stmt_teacher->bind_param("i", $teacher_id);
+            if ($stmt_teacher->execute()) {
+              // Success: Redirect to the teacher list page after successful deletion
+              echo "Teacher deleted successfully.";
+              header("Location: teacher_view.php");  // Redirect to another page, e.g., teacher list
+              exit();
+            } else {
+              echo "Error deleting teacher record: " . $stmt_teacher->error;
+            }
+            $stmt_teacher->close();
+          } else {
+            echo "Error preparing delete statement for teacher: " . $conn->error;
+          }
+        } else {
+          echo "Error deleting related evaluations: " . $stmt_evaluate->error;
+        }
+        $stmt_evaluate->close();
+      } else {
+        echo "Error preparing delete statement for evaluations: " . $conn->error;
+      }
     } else {
-      echo "Error deleting record: " . $stmt->error;
+      echo "Error deleting related answers: " . $stmt_answer->error;
     }
-    $stmt->close();
+    $stmt_answer->close();
   } else {
-    echo "Error preparing statement: " . $conn->error;
+    echo "Error preparing delete statement for answers: " . $conn->error;
   }
 } else {
   echo "No teacher ID specified.";

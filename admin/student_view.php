@@ -5,7 +5,7 @@ session_start();
 ?>
 
 <?php
-$sql = "SELECT s.school_id, s.name, s.email, s.year_level, s.image, 
+$sql = "SELECT s.student_id, s.school_id, s.name, s.email, s.year_level, s.image, 
 d.department_name, sec.section_name, ss.is_regular
 FROM tblstudent s
 LEFT JOIN tbldepartment d ON s.department_id = d.department_id
@@ -228,8 +228,8 @@ $result = $conn->query($sql);
                       </a>
                     </div>
                     <div class="w-full m-1">
-                      <a href="#delete">
-                        <img src="../admin/Images/delete.svg" alt="School ID"
+                      <a href="../admin/student_delete.php?deleteId=<?php echo htmlspecialchars($row['student_id']); ?>">
+                        <img src="../admin/Images/delete.svg" alt="Delete"
                           class="w-8 h-8 px-2 rounded-md py-1 bg-red-900 hover:bg-red-500 top-1 left-8">
                       </a>
                     </div>
