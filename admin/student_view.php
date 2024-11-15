@@ -611,7 +611,7 @@ function addStudent($conn, $school_id, $fname, $lname, $email, $department_id, $
           $stmt_section->bind_param("iii", $student_id, $section_id, $is_regular);
 
           if ($stmt_section->execute()) {
-            echo "Student and section information added successfully!";
+            echo "<script>alert('Student created successfully!');</script>";
           } else {
             echo "Error: " . $stmt_section->error;
           }
@@ -661,6 +661,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     isset($_POST['is_regular']) ? 1 : 0,
     $_POST['password'],
     $_FILES['hen']
+
   );
 }
 ?>

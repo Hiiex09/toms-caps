@@ -258,17 +258,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
   <div class="w-full bg-white p-6 rounded-lg shadow-lg">
-    <h1 class="text-center text-2xl text-gray-800">Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?> - <?php echo htmlspecialchars($_SESSION['school_id']); ?></h1>
-    <h2 class="text-center text-xl text-gray-700 mt-2">Your Assigned Teachers and Subjects</h2>
+    <h1 class="text-center text-4xl text-gray-800">Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?> - <span class="text-blue-500"><?php echo htmlspecialchars($_SESSION['school_id']); ?></span></h1>
+    <h2 class="text-center text-2xl text-slate-900 mt-2">Your Assigned Teachers and Subjects</h2>
 
     <?php if (!empty($teachers)): ?>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 w-full">
         <?php foreach ($teachers as $teacher): ?>
-          <div class="bg-gray-100 p-4 rounded-lg shadow-md flex items-center hover:scale-105 transform transition-all cursor-pointer" onclick="selectTeacher(<?php echo $teacher['teacher_id']; ?>, '<?php echo addslashes($teacher['teacher_name']); ?>', '<?php echo addslashes($teacher['subject_name']); ?>')">
+          <div class="bg-gray-100 border-s-8 border-green-900 p-4 rounded-lg shadow-md flex items-center hover:scale-105 transform transition-all cursor-pointer" onclick="selectTeacher(<?php echo $teacher['teacher_id']; ?>, '<?php echo addslashes($teacher['teacher_name']); ?>', '<?php echo addslashes($teacher['subject_name']); ?>')">
             <img src="../pic/pics/<?php echo htmlspecialchars($teacher['image']); ?>" alt="Teacher Profile" class="w-20 h-20 rounded-full mr-4">
             <div class="text-gray-800">
-              <p class="font-semibold"><?php echo htmlspecialchars($teacher['teacher_name']); ?></p>
-              <p class="text-gray-600"><?php echo htmlspecialchars($teacher['subject_name']); ?></p>
+              <p class="font-semibold text-2xl"><?php echo htmlspecialchars($teacher['teacher_name']); ?></p>
+              <p class="text-gray-600 text-2xl"><?php echo htmlspecialchars($teacher['subject_name']); ?></p>
             </div>
           </div>
         <?php endforeach; ?>

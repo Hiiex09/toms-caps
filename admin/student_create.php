@@ -75,7 +75,10 @@ function addStudent($conn, $school_id, $fname, $lname, $email, $department_id, $
           $stmt_section->bind_param("iii", $student_id, $section_id, $is_regular);
 
           if ($stmt_section->execute()) {
-            echo "Student and section information added successfully!";
+            // echo "Student and section information added successfully!";
+            echo '<div class="fixed bottom-0 left-[260px] right-0 top-0 z-10 p-10 bg-blue-900">
+                    <h1>Student and section information added successfully!</h1>
+                    </div>';
           } else {
             echo "Error: " . $stmt_section->error;
           }
@@ -247,18 +250,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         <h2>Add Student</h2>
       </div>
 
-      <form 
-        action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" 
-        method="post" 
+      <form
+        action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>"
+        method="post"
         enctype="multipart/form-data">
         <div class="con">
 
           <div class="group">
             <label>School Id:</label>
-            <input class="control ctrl1" 
-            type="text" minlength="7" maxlength="7" name="school_id" 
-            autocomplete="off" placeholder="Enter your school id" 
-            value="<?php echo isset($schoolId); ?>">
+            <input class="control ctrl1"
+              type="text" minlength="7" maxlength="7" name="school_id"
+              autocomplete="off" placeholder="Enter your school id"
+              value="<?php echo isset($schoolId); ?>">
           </div><br>
 
           <div class="group">
@@ -307,15 +310,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
           </div><br>
 
           <div class="group">
-            <label>Is Regular Student:</label>  
+            <label>Is Regular Student:</label>
             <input type="checkbox" name="is_regular" value="1">
           </div>
 
           <div class="group">
             <img src="evaluation/pic/" id="imgss">
-            <input type="file" name="hen" id="hen" 
-            value="" accept=".jpeg, .jpg, .png, .svg" 
-            >
+            <input type="file" name="hen" id="hen"
+              value="" accept=".jpeg, .jpg, .png, .svg">
             <label class="hen" for="hen">Upload</label>
           </div>
 

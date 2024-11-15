@@ -21,6 +21,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 $result = $conn->query($sql);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,10 +35,6 @@ $result = $conn->query($sql);
 <body>
   <aside>
     <div class="container">
-      <div class="menu">
-
-      </div>
-      <hr>
       <div class="fixed bottom-0 left-0 top-0 z-50 w-[270px] border shadow">
         <div class=" text-2xl text-center flex justify-center items-center hover:border py-1 rounded-sm cursor-pointer">
           <div class="mx-1">
@@ -366,6 +363,7 @@ $result = $conn->query($sql);
         </form>
       </div>
 
+
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="get">
         <div class="flex justify-center item-center w-full mt-6 mb-2">
           <div class="flex-1">
@@ -426,7 +424,7 @@ $result = $conn->query($sql);
                       </a>
                     </div>
                     <div class="m-1">
-                      <a href="#update">
+                      <a href="#">
                         <img src="../admin/Images/update.svg" alt="School ID"
                           class="w-8 h-8 px-2 rounded-md py-1 bg-blue-900 hover:bg-blue-500 top-1 left-8">
                       </a>
@@ -462,7 +460,6 @@ $result = $conn->query($sql);
     btnModal.addEventListener('click', () => {
       modal.classList.remove('hidden');
     });
-
 
     btnClose.forEach((button) => {
       button.addEventListener('click', () => {
